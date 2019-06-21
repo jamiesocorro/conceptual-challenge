@@ -1,0 +1,288 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+:root {
+    --white: #ffffff;
+    --original: #000000;
+    --green: #4CAF50;
+    --red: #F44336;
+    --blue: #2196F3;
+}
+
+
+/* colors */
+
+.red {
+    color: var(--red);
+}
+
+.green {
+    color: var(--green);
+}
+
+.blue {
+    color: var(--blue);
+}
+
+.red-bg {
+    background-color: var(--red);
+}
+
+.green-bg {
+    background-color: var(--green);
+}
+
+.blue-bg {
+    background-color: var(--blue);
+}
+
+.blue-bg,
+.red-bg,
+.green-bg {
+    color: white;
+}
+
+
+/* end colors */
+
+button {
+    border: none;
+    border-radius: 5px !important;
+    padding: 5px 15px;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.main-cont {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.box,
+li {
+    list-style: none;
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.author-list {
+    margin: 10px 0px;
+    padding: 10px;
+    width: 100%;
+}
+
+.speech-nav {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.speech-container {
+    display: flex;
+    justify-content: center;
+}
+
+.speech-body {
+    flex-grow: 2;
+}
+
+.speech-body textarea {
+    width: 100%;
+}
+
+.speech-body__details {
+    display: flex;
+    margin-top: 10px;
+    position: relative;
+}
+
+.speech-body__details>input {
+    flex-grow: 1;
+}
+
+.speech-body__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0px;
+}
+
+.speech-box {
+    width: 500px;
+    height: 200px;
+}
+
+.flex-item {
+    flex-grow: 1;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+
+.mb-0 {
+    margin-bottom: 0px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.marg {
+    margin: 10px;
+}
+
+.align-center {
+    align-self: center;
+}
+
+.cont {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.header-list-container {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+}
+
+.header-list-container div {
+    flex-grow: 1;
+    text-align: center;
+    list-style: none;
+    border: 1px solid black;
+    border-left: 0px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.header-list-container div:first-child {
+    border-left: 1px solid black;
+}
+
+textarea,
+input[type=textbox] {
+    padding: 5px;
+}
+
+.speech-selected {
+    background-color: #e0e0e0;
+}
+
+.search-keywords {
+    margin: 0px 10px;
+}
+
+.mobile-version {
+    display: none;
+}
+
+.search-list {
+    position: absolute;
+    background: white;
+    width: 300px;
+    right: 120px;
+    top: 45px;
+    border: 1px solid #bababa;
+}
+
+.search-list div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-list div:nth-child(odd) {
+    background: #e0e0e0;
+}
+
+.search-list div:nth-child(even) {
+    background: white;
+}
+
+@media screen and (max-width: 442px) {
+    .header-list-container,
+    .speech-nav {
+        display: none;
+    }
+    .main-cont {
+        justify-content: inherit !important;
+    }
+    .cont {
+        width: 100%;
+    }
+    .mobile-version {
+        display: block;
+    }
+    input {
+        width: 100%;
+        margin-bottom: 10px !important;
+    }
+    .menu-bar {
+        margin: 10px 0px;
+    }
+    input[type="date"] {
+        height: 30px;
+    }
+    i {
+        font-size: 25px !important;
+        padding: 10px;
+    }
+    .box {
+        border: none;
+    }
+    .speech-body__details {
+        display: block;
+    }
+    .speech-body__actions {
+        display: none;
+    }
+    .search-keywords {
+        display: none;
+    }
+    .speech-list .box:nth-child(odd) {
+        background: #e0e0e0;
+    }
+    .speech-list .box:nth-child(even) {
+        background: white;
+    }
+    .search-list div {
+        padding: 10px;
+    }
+    .search-list {
+        top: 130px;
+    }
+    .speech-container {
+        display: block;
+    }
+    .speech-list {
+        height: 200px;
+    }
+    .search-list,
+    .speech-list {
+        position: absolute;
+        background-color: white;
+        border: 1px solid #bababa;
+        overflow: auto;
+        width: calc(100% - 20px);
+    }
+}

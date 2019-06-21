@@ -1,0 +1,93 @@
+<div class="main-cont marg">
+    <div class="cont">
+
+        <div class="display-flex mb-10">
+            <h5 class="align-center mr-10">Authors:</h5>
+            <select class="author-list" (change)="getSpeechByAuthor($event.target.value)">
+                <option [value]="author" *ngFor="let author of authors"> {{author}}</option>
+            </select>
+            <div class="mobile-version align-center ml-10">
+                <i class="fa fa-eye" (click)="viewSpeeches()"></i>
+            </div>
+        </div>
+
+        <div class="header-list-container display-flex justify-center">
+            <div (click)="getSpeechByAuthor(this.author)">View my Speeches</div>
+            <div (click)="createSpeech()">Submit a new Speech</div>
+            <div (click)="viewSpeeches()">Search all Speeches</div>
+        </div>
+
+        <div class="speech-container">
+            <div class="speech-nav" *ngIf="!isNew">
+                <div class="box" *ngFor="let speech of speeches; let i = index" (click)="showSpeech(speech)" [ngClass]="{'speech-selected': speech.isSelected}">
+                    <b>Speech {{ i + 1}}</b>
+                    <i *ngIf="speech.isSelected" class="fa fa-angle-right"></i>
+                </div>
+            </div>
+            <div class="mobile-version">
+                <div class="display-flex">
+                    <div class="flex-item">
+                        <input class="mb-0" type="textbox" placeholder="Search area keywords" [(ngModel)]="search" (keyup)="searchSpeech($event.target.value)">
+                    </div>
+                    <div class="search-list" [hidden]="isSearching">
+                        <div *ngFor="let speech of searchedList; let i = index" (click)="showSpeech(speech, i)" [ngClass]="{'speech-selected': speech.isSelected}">
+                            {{ speech.speech }}
+                            <i *ngIf="speech.isSelected" class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <div class="align-center ml-10">
+                        <i class="fa fa-plus" (click)="createSpeech()"></i>
+                    </div>
+
+                </div>
+                <div class="menu-bar display-flex">
+                    <div>
+                        <i class="fa fa-bars" (click)="showMenu = !showMenu"></i>
+                    </div>
+                    <div class="flex-item ml-10 align-center">
+                        <b>Speech {{ (speechIndex ? speechIndex : 0) + 1}}</b>
+                    </div>
+                    <div class="ml-10">
+                        <i class="fa fa-trash red" (click)="deleteSpeech()"></i>
+                    </div>
+                    <div class="ml-10">
+                        <i class="fa fa-save green" (click)="saveSpeech()"></i>
+                    </div>
+                    <div class="ml-10">
+                        <i class="fa fa-share blue"></i>
+                    </div>
+
+                </div>
+                <div class="speech-list" [hidden]="showMenu">
+                    <div class="box" *ngFor="let speech of speeches; let i = index" (click)="showSpeech(speech, i)" [ngClass]="{'speech-selected': speech.isSelected}">
+                        Speech {{ i + 1}}
+                        <i *ngIf="speech.isSelected" class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="speech-body">
+                <textarea rows="10" [(ngModel)]="this.speechModel.speech">{{speechModel.speech}}</textarea>
+                <div class="speech-body__details">
+                    <input type="textbox" placeholder="Author" [(ngModel)]="this.speechModel.author">
+                    <input class="search-keywords" type="textbox" placeholder="Search area keywords" [(ngModel)]="search" *ngIf="!isNew" (keyup)="searchSpeech($event.target.value)">
+                    <div class="search-list" [hidden]="isSearching">
+                        <div *ngFor="let speech of searchedList; let i = index" (click)="showSpeech(speech, i)" [ngClass]="{'speech-selected': speech.isSelected}">
+                            {{ speech.speech }}
+                            <i *ngIf="speech.isSelected" class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <input type="date" [(ngModel)]="this.speechModel.date">
+                </div>
+                <div class="speech-body__actions">
+                    <button class="red-bg" (click)="deleteSpeech()">Delete</button>
+                    <button class="ml-10 mr-10 green-bg" (click)="saveSpeech()">Save</button>
+                    <button class="blue-bg" (click)="shareSpeech()">Share</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

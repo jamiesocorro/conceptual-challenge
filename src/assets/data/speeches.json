@@ -1,0 +1,25 @@
+[{
+        "id": 1,
+        "speech": "Item 1",
+        "author": "author 1",
+        "isSelected": true
+    },
+    {
+        "id": 2,
+        "speech": "Item 2",
+        "author": "author 2",
+        "isSelected": false
+    },
+    {
+        "id": 3,
+        "speech": "Item 3",
+        "author": "author 3",
+        "isSelected": false
+    },
+    {
+        "id": 4,
+        "speech": "Item 4",
+        "author": "author 4",
+        "isSelected": false
+    }
+]
