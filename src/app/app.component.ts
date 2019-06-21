@@ -41,8 +41,8 @@ export class AppComponent {
 
     if(speeches && speeches.length > 0) {
       this.speeches = speeches;
-      this.speechesList = speeches;
-      this.speechModel = this.speeches[0] as SpeechObject;
+      this.speechesList = speeches;      
+      this.speechModel = this.speeches.find(x => x.isSelected);
       this.author = this.speechModel.author;
     } else {
       this.http
@@ -97,6 +97,7 @@ export class AppComponent {
         this.speechModel.id = id;
         this.speechModel.isSelected = true;
         this.speechesList.push(this.speechModel);
+        this.speechIndex = this.speeches.length - 1;
         this.isNew = false;  
       } 
   
@@ -126,6 +127,7 @@ export class AppComponent {
           this.speechModel = this.speeches[this.speeches.length - 1] as SpeechObject;
           this.speechModel.isSelected = true;
           localStorage.setItem("speechesData", JSON.stringify(this.speeches));
+          this.speechIndex = this.speeches.length - 1;
         }
       }
     } 
