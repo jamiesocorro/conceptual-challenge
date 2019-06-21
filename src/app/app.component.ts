@@ -88,17 +88,22 @@ export class AppComponent {
 
   saveSpeech() {
 
-    if(!this.speechModel.id && this.isNew) {
-      let id = this.speeches.length + 1;
- 
-      this.speechModel.id = id;
-      this.speechModel.isSelected = false;
-      this.speechesList.push(this.speechModel);
-    } 
-
-    localStorage.setItem("speechesData", JSON.stringify(this.speechesList));    
-    this.getAuthors();
-    
+    var r = confirm("Do you want to save the speech?");
+    if (r == true) {
+      if(!this.speechModel.id && this.isNew) {
+        let id = this.speeches.length + 1;
+   
+        this.removeSelectedSpeech();              
+        this.speechModel.id = id;
+        this.speechModel.isSelected = true;
+        this.speechesList.push(this.speechModel);
+        this.isNew = false;  
+      } 
+  
+      localStorage.setItem("speechesData", JSON.stringify(this.speechesList));  
+      this.getAuthors();
+        
+    }     
     
   }
 
@@ -119,10 +124,17 @@ export class AppComponent {
         if(this.speeches[i].id == this.speechModel.id) {
           this.speeches.splice(i, 1);
           this.speechModel = this.speeches[this.speeches.length - 1] as SpeechObject;
+          this.speechModel.isSelected = true;
           localStorage.setItem("speechesData", JSON.stringify(this.speeches));
         }
       }
     } 
+  }
+
+  removeSelectedSpeech() {
+    for(var i = 0; i < this.speeches.length; i++) {
+      this.speeches[i].isSelected = false;
+    }
   }
 
   showSpeech(item, index) {
