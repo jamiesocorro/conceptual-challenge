@@ -265,11 +265,15 @@ input[type=textbox] {
     .speech-list .box:nth-child(even) {
         background: white;
     }
-    .search-list div {
+    .search-list-mobile div {
         padding: 10px;
     }
-    .search-list {
+    .search-list-mobile {
         top: 130px;
+        right: 10px;
+    }
+    .search-list {
+        display: none;
     }
     .speech-container {
         display: block;
@@ -277,7 +281,7 @@ input[type=textbox] {
     .speech-list {
         height: 200px;
     }
-    .search-list,
+    .search-list-mobile,
     .speech-list {
         position: absolute;
         background-color: white;

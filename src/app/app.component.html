@@ -29,7 +29,7 @@
                     <div class="flex-item">
                         <input class="mb-0" type="textbox" placeholder="Search area keywords" [(ngModel)]="search" (keyup)="searchSpeech($event.target.value)">
                     </div>
-                    <div class="search-list" [hidden]="isSearching">
+                    <div class="search-list-mobile" [hidden]="isSearching">
                         <div *ngFor="let speech of searchedList; let i = index" (click)="showSpeech(speech, i)" [ngClass]="{'speech-selected': speech.isSelected}">
                             {{ speech.speech }}
                             <i *ngIf="speech.isSelected" class="fa fa-angle-right"></i>
